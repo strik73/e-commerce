@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +24,12 @@ Auth::routes();
 
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin/items/index', [App\Http\Controllers\ItemController::class, 'index'])->name('items.index');
+Route::get('/admin/items/index', [ItemController::class, 'index'])->name('items.index');
 
-Route::get('/admin/category/index', [App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
-Route::post('/admin/category/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('category.store');
+Route::get('/admin/category/index', [CategoryController::class, 'index'])->name('category.index');
+Route::post('/admin/category/store', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+
 
 
