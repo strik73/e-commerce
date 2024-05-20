@@ -1,0 +1,22 @@
+/* Custom DataTables styling */
+table.dataTable thead th {
+    background-color: #0655a9;
+    color: white;
+}
+
+table.dataTable tbody tr {
+    background-color: #f8f9fa;
+}
+
+table.dataTable tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+table.dataTable tbody tr:hover {
+    background-color: #dee2e6;
+}
+
+table.dataTable {
+    border: 1px solid #dee2e6;
+    font-size: 11pt;
+}

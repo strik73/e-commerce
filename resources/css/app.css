@@ -1,1 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
+
+.card {
+    border-radius: 0;
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.107);
+}
+
