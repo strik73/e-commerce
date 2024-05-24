@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('category_id')->references('id')->on('categories')->onUpdate('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade');
+            $table->integer('stock');
+            $table->string('condition');
+            $table->double('price');
+            $table->text('description');
+            $table->boolean('status');
+            $table->string('image');
+            $table->string('imageSec')->nullable();
+            $table->string('imageThird')->nullable();
             $table->timestamps();
         });
     }

@@ -25,6 +25,10 @@ Auth::routes();
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/items/index', [ItemController::class, 'index'])->name('items.index');
+Route::get('/admin/items/create', [ItemController::class, 'create'])->name('items.create');
+Route::post('/admin/items/store', [ItemController::class, 'store'])->name('items.store');
+Route::get('/admin/items/edit/{id}', [ItemController::class, 'edit'])->name('items.edit');
+Route::put('/admin/items/update/{id}', [ItemController::class, 'update'])->name('items.update');
 
 Route::get('/admin/category/index', [CategoryController::class, 'index'])->name('category.index');
 Route::post('/admin/category/store', [CategoryController::class, 'store'])->name('category.store');
