@@ -11,27 +11,43 @@
     <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autonumeric/4.10.5/autoNumeric.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="{{ asset('css/dataTable.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 
     <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
         #page-container {
             position: relative;
         }
+
 
         #content-wrap {
             padding-bottom: 2.5rem;
             padding-left: 19rem;
             padding-top: 1rem;
             padding-right: 2rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         #footer {
-            position: absolute;
+            height: 3.5rem;
+            position: relative;
             bottom: 0;
             width: 100%;
-            height: 3.5rem;
-            /* Footer height */
         }
 
         .nav-link:hover {
@@ -59,8 +75,8 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link text-white @if (request()->routeIs('home'))
-                        active @endif" aria-current="page">
+                    <a href="{{ route('home') }}"
+                        class="nav-link text-white @if (request()->routeIs('home')) active @endif" aria-current="page">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             style="translate: -1px -4px" stroke-linejoin="round" class="ms-2">
@@ -72,12 +88,12 @@
                         Home
                     </a>
                 </li>
-                <hr/>
+                <hr />
                 <li class="nav-item">
                     <a href="#" class="nav-link text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="translate: -1px -2px"
-                            stroke-linejoin="round" class="ms-2">
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            style="translate: -1px -2px" stroke-linejoin="round" class="ms-2">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
                             <path d="M12 12l8 -4.5" />
@@ -88,10 +104,15 @@
                     </a>
                 </li>
                 <li class="ms-3 nav-item">
-                    <a href="{{route('category.index')}}" class="nav-link text-white ms-4 @if (request()->routeIs('category.index'))
-                        active
-                    @endif">
+                    <a href="{{ route('category.index') }}"
+                        class="nav-link text-white ms-4 @if (request()->routeIs('category.index')) active @endif">
                         Category
+                    </a>
+                </li>
+                <li class="ms-3 nav-item">
+                    <a href="{{ route('items.index') }}"
+                        class="nav-link text-white ms-4 @if (request()->routeIs('items.index')) active @endif">
+                        Items
                     </a>
                 </li>
             </ul>
