@@ -63,11 +63,11 @@
                             <tr>
                                 <th class="text-center">{{ ltrim(substr($item->no_item, -5), '0') }}</th>
                                 <th class="text-center">{{ $item->no_item }}</th>
-                                <th>{{ $item->name }}</th>
-                                <th>{{ $item->categories->category }}</th>
-                                <th>{{ $item->stock }}</th>
-                                <th>Rp. {{ number_format($item->price, 0, '.', ',') }}</th>
-                                <th>{{ $item->condition }}</th>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->categories->category }}</td>
+                                <td>{{ $item->stock }}</td>
+                                <td>Rp. {{ number_format($item->price, 0, '.', ',') }}</td>
+                                <td>{{ $item->condition }}</td>
                                 <td>
                                     @if ($item->status == true)
                                         <span class="badge bg-success text-white">Aktif</span>

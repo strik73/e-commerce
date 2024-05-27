@@ -61,15 +61,15 @@
                     <tbody>
                         @forelse ($transactions as $transaction)
                             <tr>
+                                <th class="text-center">{{ ltrim(substr($transaction->no_transaction, -5), '0') }}</th>
                                 <th class="text-center">{{ $transaction->no_transaction }}</th>
-                                <th class="text-center">{{ $transaction->no_transaction }}</th>
-                                <th>{{ $transaction->item_no_item }}</th>
-                                <th>{{ $transaction->items->name }}</th>
-                                <th>{{ $transaction->users->name }}</th>
-                                <th>{{ $transaction->quantity }}</th>
-                                <th>Rp. {{ number_format($transaction->total_price, 0, '.', ',') }}</th>
-                                <th>{{ $transaction->status }}</th>
-                                <th>{{ format($transaction->created_at, 'Hh:mm d-m-y') }}</th>
+                                <td>{{ $transaction->item_no_item }}</td>
+                                <td>{{ $transaction->items->name }}</td>
+                                <td>{{ $transaction->users->name }}</td>
+                                <td>{{ $transaction->quantity }}</td>
+                                <td>Rp. {{ number_format($transaction->total_price, 0, '.', ',') }}</td>
+                                <td>{{ $transaction->status }}</td>
+                                <td>{{ format($transaction->created_at, 'Hh:mm d-m-y') }}</td>
                             </tr>
                         @empty
                         @endforelse
