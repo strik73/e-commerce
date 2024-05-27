@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\TransactionController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,5 +37,5 @@ Route::post('/admin/category/store', [CategoryController::class, 'store'])->name
 Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
 Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 
-
+Route::get('/admin/transaction/index', [TransactionController::class, 'index'])->name('transaction.index');
 
