@@ -28,7 +28,7 @@
 
     <div class="card mt-4">
         <div class="card-body px-5">
-            <form id="form" action="{{ route('items.update', $items->id) }}" method="post" enctype="multipart/form-data">
+            <form id="form" action="{{ route('items.update', $items->no_item) }}" method="post" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="row">

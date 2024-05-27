@@ -48,6 +48,7 @@
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
+                            <th class="text-center">Item ID</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Stock</th>
@@ -60,7 +61,8 @@
                     <tbody>
                         @forelse ($items as $item)
                             <tr>
-                                <th class="text-center">{{ $item->id }}</th>
+                                <th class="text-center">{{ ltrim(substr($item->no_item, -5), '0') }}</th>
+                                <th class="text-center">{{ $item->no_item }}</th>
                                 <th>{{ $item->name }}</th>
                                 <th>{{ $item->categories->category }}</th>
                                 <th>{{ $item->stock }}</th>
@@ -75,7 +77,7 @@
                                 </td>
                                 <td class="text-center">
                                     {{-- @if (auth()->user()->can('UPDATE KATEGORI')) --}}
-                                    <a href="{{route('items.edit', $item->id)}}" type="button" class="btn btn-sm btn-primary">
+                                    <a href="{{route('items.edit', $item->no_item)}}" type="button" class="btn btn-sm btn-primary">
                                         <span class="">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-pencil"
                                                 width="18" height="18" viewBox="0 0 24 24" stroke-width="2"

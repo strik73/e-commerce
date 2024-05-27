@@ -107,7 +107,7 @@
 
                     <div>
                         <label class="fw-semibold mb-2" for="description">Description</label>
-                        <textarea name="description" id="description" value="{{ old('description') }}"></textarea>
+                        <textarea name="description" id="description">{{ old('description') }}</textarea>
                     </div>
 
                     <div class="mt-4 mb-4">

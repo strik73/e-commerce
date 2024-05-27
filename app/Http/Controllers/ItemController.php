@@ -6,11 +6,13 @@ use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ItemController extends Controller
 {
-    function index(){
+    function index()
+    {
         $items = Item::all();
         return view('admin.items.index', compact('items'));
     }
@@ -35,6 +37,16 @@ class ItemController extends Controller
         $status = $request->boolean('status');
         $itemId = request('id');
         $user = Auth::user();
+
+        $namaUser = DB::table('users')
+            ->select('name')
+            ->where('id', $user->id)
+            ->value('name');
+
+        $idUser = DB::table('users')
+            ->select('id')
+            ->where('id', $user->id)
+            ->value('id');
 
         if ($request->hasFile('image')) {
             $request->validate([
@@ -96,8 +108,12 @@ class ItemController extends Controller
             'image' => $pathImage,
             'imageSec' => $pathImageSec,
             'imageThird' => $pathImageTrd,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'no_item' => ''
         ]);
+
+        $items->no_item = Item::generateItem($items->created_at, $namaUser, $idUser);
+        $items->save();
 
         return redirect()->route('items.index')->with('success', 'Data successfully added');
     }
@@ -107,10 +123,11 @@ class ItemController extends Controller
         $items = Item::find($id);
         $categories = Category::all();
 
-        return view('admin.items.edit', compact('categories','items'));
+        return view('admin.items.edit', compact('categories', 'items'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $validated = $request->validate([
             'name' => 'required|string',
             'category_id' => 'required|string',
