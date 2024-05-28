@@ -6,7 +6,7 @@
     <style>
         .ck-editor__editable_inline {
             min-height: 200px;
-            /* Adjust the height as needed */
+            margin-bottom: 25px;
         }
     </style>
 
@@ -109,6 +109,7 @@
                         <label class="fw-semibold mb-2" for="description">Description</label>
                         <textarea name="description" id="description">{{ old('description') }}</textarea>
                     </div>
+                    <hr class="my-2"/>
 
                     <div class="mt-4 mb-4">
                         <a type="button" class="btn btn-outline-secondary me-2" style="width: 80px"
