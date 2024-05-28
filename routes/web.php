@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin/user/index', [UserController::class, 'index'])->name('user.index');
+Route::get('/admin/user/create', [UserController::class, 'create'])->name('user.create');
+Route::post('/admin/user/store', [UserController::class, 'store'])->name('user.store');
+Route::get('/admin/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/admin/user/update/{id}', [UserController::class, 'update'])->name('user.update');
 
 Route::get('/admin/items/index', [ItemController::class, 'index'])->name('items.index');
 Route::get('/admin/items/create', [ItemController::class, 'create'])->name('items.create');
