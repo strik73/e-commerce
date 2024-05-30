@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
-use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +46,4 @@ Route::put('/admin/category/update/{id}', [CategoryController::class, 'update'])
 
 Route::get('/admin/transaction/index', [TransactionController::class, 'index'])->name('transaction.index');
 
+Route::get('/admin/payment/index', [PaymentController::class, 'index'])->name('payment.index');
