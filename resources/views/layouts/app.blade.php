@@ -154,6 +154,12 @@
                         Transaction List
                     </a>
                 </li>
+                <li class="ms-3 nav-item">
+                    <a href="{{ route('payment.index') }}"
+                        class="nav-link text-white ms-4 @if (request()->routeIs('payment.index')) active @endif">
+                        Payment History
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -50,12 +50,16 @@ class Item extends Model
         return $no_item;
     }
 
-    function categories()
+    public function categories()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
-    function transactions()
+    public function transactions()
     {
         return $this->hasMany(Transaction::class, 'item_id', 'id');
+    }
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

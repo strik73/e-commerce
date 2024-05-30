@@ -46,4 +46,14 @@ class Transaction extends Model
     {
         return $this->belongsTo(Item::class, 'item_id', 'id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function payments()
+    {
+        return $this->hasOne(Payment::class, 'transaction_no_transaction', 'no_transaction');
+    }
 }
