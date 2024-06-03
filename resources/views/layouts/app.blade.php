@@ -72,8 +72,8 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="{{ route('home') }}"
-                        class="nav-link text-white @if (request()->routeIs('home')) active @endif" aria-current="page">
+                    <a href="{{ route('admin.homre') }}"
+                        class="nav-link text-white @if (request()->routeIs('admin.home')) active @endif" aria-current="page">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             style="translate: -1px -4px" stroke-linejoin="round" class="ms-2">

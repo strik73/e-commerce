@@ -23,8 +23,8 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string',
             'username' => 'required|string',
-            'email' => 'required|string',
-            'password' => 'required|string|password',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string',
             'city' => 'required|string',
             'address' => 'required|string',
         ]);
@@ -35,7 +35,7 @@ class UserController extends Controller
             'name' => $validated['name'],
             'username' => $validated['username'],
             'email' => $validated['email'],
-            'password' => $validated['email'],
+            'password' => bcrypt($validated['password']),
             'city' => $validated['city'],
             'address' => $validated['address'],
             'status' => $status,
@@ -55,8 +55,8 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string',
             'username' => 'required|string',
-            'email' => 'required|string',
-            'password' => 'required|string|password',
+            'email' => 'required|string|email|unique:users,email,' . $id,
+            'password' => 'required|string',
             'city' => 'required|string',
             'address' => 'required|string',
         ]);
@@ -68,7 +68,7 @@ class UserController extends Controller
             'name' => $validated['name'],
             'username' => $validated['username'],
             'email' => $validated['email'],
-            'password' => $validated['email'],
+            'password' => bcrypt($validated['password']),
             'city' => $validated['city'],
             'address' => $validated['address'],
             'status' => $status,

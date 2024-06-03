@@ -69,12 +69,21 @@
                                 value="{{ $users->address }}" placeholder="Insert address..."
                                 style="border: 1px solid #515050;" required>
                         </div>
+
+                        <div class="mb-3 col-md-3 col-sm-3">
+                            <label for="status" class="form-label">Status</label>
+                            <label class="form-check form-switch">
+                                <input class="form-check-input" name="status" type="checkbox" checked
+                                    style="border: 1px solid #515050">
+                                <span class="form-check-label">Aktif</span>
+                            </label>
+                        </div>
                     </div>
                     <hr class="my-2" />
 
                     <div class="mt-4 mb-4">
                         <a type="button" class="btn btn-outline-secondary me-2" style="width: 80px"
-                            href="{{ route('items.index') }}">Back</a>
+                            href="{{ route('user.index') }}">Back</a>
                         <button style="width: 80px" class="btn btn-primary" type="submit">Save</button>
                     </div>
                 </div>

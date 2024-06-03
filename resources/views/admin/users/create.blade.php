@@ -68,6 +68,15 @@
                                 value="{{ old('address') }}" placeholder="Insert address..."
                                 style="border: 1px solid #515050;" required>
                         </div>
+
+                        <div class="mb-3 col-md-3 col-sm-3">
+                            <label for="status" class="form-label">Status</label>
+                            <label class="form-check form-switch">
+                                <input class="form-check-input" name="status" type="checkbox" checked
+                                    style="border: 1px solid #515050">
+                                <span class="form-check-label">Aktif</span>
+                            </label>
+                        </div>
                     </div>
                     <hr class="my-2" />
 
