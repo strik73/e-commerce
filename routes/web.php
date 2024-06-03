@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeUserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TransactionController;
@@ -20,12 +21,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
 
 Auth::routes();
+//User View
+Route::get('/home', [HomeUserController::class, 'index'])->name('home');
+Route::get('/home/search', [HomeUserController::class, 'search'])->name('home.search');
+Route::get('/home/{id}', [HomeUserController::class, 'itemDetail'])->name('home.detail');
 
-Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/shopping-cart', [HomeUserController::class, 'showCart'])->name('shopping-cart');
+Route::post('/shopping-cart/store', [TransactionController::class, 'storeCart'])->name('shopping-cart.store');
+Route::put('/shopping-cart/batal/{id}', [TransactionController::class, 'batal'])->name('shopping-cart.batal');
+
+//Admin view
+Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
 
 Route::get('/admin/user/index', [UserController::class, 'index'])->name('user.index');
 Route::get('/admin/user/create', [UserController::class, 'create'])->name('user.create');
