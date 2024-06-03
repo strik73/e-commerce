@@ -24,6 +24,8 @@ class UserController extends Controller
             'name' => 'required|string',
             'username' => 'required|string',
             'email' => 'required|string|email|unique:users',
+            'phone' => 'required|string',
+            'gender' => 'required|string',
             'password' => 'required|string',
             'city' => 'required|string',
             'address' => 'required|string',
@@ -37,6 +39,8 @@ class UserController extends Controller
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
             'city' => $validated['city'],
+            'phone' => $validated['phone'],
+            'gender' => $validated['gender'],
             'address' => $validated['address'],
             'status' => $status,
         ]);
@@ -58,6 +62,8 @@ class UserController extends Controller
             'email' => 'required|string|email|unique:users,email,' . $id,
             'password' => 'required|string',
             'city' => 'required|string',
+            'phone' => 'required|string',
+            'gender' => 'required|string',
             'address' => 'required|string',
         ]);
 
@@ -70,6 +76,8 @@ class UserController extends Controller
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
             'city' => $validated['city'],
+            'phone' => $validated['phone'],
+            'gender' => $validated['gender'],
             'address' => $validated['address'],
             'status' => $status,
         ]);

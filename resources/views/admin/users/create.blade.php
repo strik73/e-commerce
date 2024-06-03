@@ -57,11 +57,27 @@
 
                     <div class="col">
                         <div style="width: 300px" class="mb-4 col-md-12 col-sm-12">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control input-field" id="phone" name="phone"
+                                value="{{ old('phone') }}" placeholder="Insert phone number..."
+                                style="border: 1px solid #515050;" required>
+                        </div>
+
+                        <div style="width: 300px" class="mb-4 col-md-12 col-sm-12">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select name="gender" id="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+
+                        <div style="width: 300px" class="mb-4 col-md-12 col-sm-12">
                             <label for="city" class="form-label">City</label>
                             <input type="text" class="form-control input-field" id="city" name="city"
                                 value="{{ old('city') }}" placeholder="Insert city name..."
                                 style="border: 1px solid #515050;" required>
                         </div>
+
                         <div style="width: 300px" class="mb-4 col-md-12 col-sm-12">
                             <label for="address" class="form-label">Address</label>
                             <input type="text" class="form-control input-field" id="address" name="address"
