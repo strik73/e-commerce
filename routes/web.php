@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeUserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,10 @@ Auth::routes();
 Route::get('/home', [HomeUserController::class, 'index'])->name('home');
 Route::get('/home/search', [HomeUserController::class, 'search'])->name('home.search');
 Route::get('/home/{id}', [HomeUserController::class, 'itemDetail'])->name('home.detail');
+
+Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile.index');
+Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::get('/shopping-cart', [HomeUserController::class, 'showCart'])->name('shopping-cart');
 Route::post('/shopping-cart/store', [TransactionController::class, 'storeCart'])->name('shopping-cart.store');
