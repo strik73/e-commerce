@@ -48,6 +48,16 @@
         bottom: 0;
         width: 100%;
     }
+
+    .avatar {
+        border: 0.5px solid rgb(201, 221, 255);
+        padding: 4px 10px;
+        border-radius: 7px;
+        background-color: rgb(134, 178, 255);
+        /* box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.178); */
+        color: rgb(255, 251, 246);
+        font-weight: 500;
+    }
 </style>
 
 <body>
@@ -86,9 +96,12 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link d-flex align-items-center dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <div class="avatar justify-content-center align-middle text-center mx-2">@php
+                                        echo strtoupper(substr(Auth::user()->name, 0, 2));
+                                    @endphp </div>
+                                    <span>{{ Auth::user()->name }}</span>
                                 </a>
 
 

@@ -4,6 +4,20 @@
 
 @section('content')
 
+<style>
+    .profile-picture{
+        width: 120px;
+        height: 120px;
+        background-color: rgb(134, 178, 255);
+        align-content: center;
+        align-items: center;
+        font-size: 50px;
+        border-radius: 20px;
+        color: white;
+        font-weight: 500;
+    }
+</style>
+
 @if (session('success'))
         <script>
             const Toast = Swal.mixin({
@@ -37,15 +51,12 @@
                     <path d="M5 12l6 -6" />
                 </svg> Kembali</a>
 
-            <div class="d-flex justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon text-secondary icon-tabler icons-tabler-outline icon-tabler-user-circle">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
-                </svg>
+            <div class="d-flex justify-content-center align-items-center mb-4">
+                <div class="profile-picture text-center align-self-center">
+                    @php
+                        echo strtoupper(substr($user->name, 0, 2));
+                    @endphp
+                </div>
             </div>
 
             <div class="d-flex mt-3 justify-content-center align-items-center">
