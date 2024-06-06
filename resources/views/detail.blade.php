@@ -151,7 +151,7 @@
                         <div style="width: 300px" class="mb-3 col-md-12 col-sm-12">
                             <label for="quantity" class="form-label">Quantity</label>
                             <input type="number" class="form-control" id="quantity" name="quantity"
-                                placeholder="Masukian jumlah pemesanan..." style="border: 1px solid #515050;" required>
+                                placeholder="Masukan jumlah pemesanan..." style="border: 1px solid #515050;" required>
                         </div>
 
                         <div style="width: 300px" class="mb-3 col-md-12 col-sm-12">

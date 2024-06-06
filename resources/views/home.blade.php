@@ -25,11 +25,31 @@
         }
     </style>
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "Success",
+                text: "{{ session('success') }}",
+                icon: "success",
+            });
+        </script>
+    @endif
+
     <div class="mb-3">
         <div class="container flex d-flex justify-content-between">
             <h3>Belanja Apa Hari Ini?</h3>
 
             <div class="d-flex align-items-center">
+                <a type="button" class="btn btn-light mx-3" href="{{ route('history') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" style="translate: 0 -1px" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-history me-2">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 8l0 4l2 2" />
+                        <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                    </svg>History Pembayaran
+                </a>
+
                 <a type="button" class="btn btn-light mx-3" href="{{ route('shopping-cart') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -43,7 +63,8 @@
                 </a>
 
                 <form class="d-flex" action="{{ route('home.search') }}" method="get">
-                    <input style="width: 300px" type="text" class="form-control" name="search" id="search" placeholder="Cari di sini...">
+                    <input style="width: 300px" type="text" class="form-control" name="search" id="search"
+                        placeholder="Cari di sini...">
                     <button type="submit" class="ms-2 btn btn-primary" style="width: 80px">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -109,7 +130,8 @@
                     </svg>
                     Barang tidak ada!
                 </p>
-                <a style="width: 100px" type="button" class="btn mt-3 btn-secondary" href="{{ route('home') }}">Kembali</a>
+                <a style="width: 100px" type="button" class="btn mt-3 btn-secondary"
+                    href="{{ route('home') }}">Kembali</a>
             </div>
         @endif
     </div>

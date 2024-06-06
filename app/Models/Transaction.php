@@ -12,9 +12,9 @@ class Transaction extends Model
     protected $table = 'transactions';
     protected $primaryKey = 'no_transaction';
     public $incrementing = false;
-    protected $fillalbe = [
+    protected $fillable = [
         'no_transaction',
-        'item_id',
+        'item_no_item',
         'user_id',
         'quantity',
         'total_price',
@@ -23,10 +23,10 @@ class Transaction extends Model
 
     public static function generateTransaction($date)
     {
-        $prefix = 'ORD-';
+        $prefix = 'ORD';
         $tanggal = Carbon::parse($date)->format('ymd');
 
-        $latest = Transaction::where('no_transaction', 'like', $prefix . '-' . $tanggal . '-%')
+        $latest = Transaction::where('no_transaction', 'like', $prefix . '-' . '%' . '-%')
             ->latest('created_at')
             ->first();
 

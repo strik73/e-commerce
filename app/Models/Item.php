@@ -33,7 +33,7 @@ class Item extends Model
         $tanggal = Carbon::parse($date)->format('ymd');
         $namePart = substr($name, 0, 3);
 
-        $latest = Item::where('no_item', 'like', $prefix . '-' . strtoupper($namePart) . $userid . '-' . '%' . '-%')
+        $latest = Item::where('no_item', 'like', $prefix . '-' . strtoupper($namePart) . $userid . '-%')
             ->latest('created_at')
             ->first();
 
@@ -45,7 +45,7 @@ class Item extends Model
             $incrementPart = '00001';
         }
 
-        $no_item = $prefix . '-' . strtoupper($namePart) . $userid . '-' . $tanggal . '-' . $incrementPart;
+        $no_item = $prefix . '-' . strtoupper($namePart) . $userid . '-' . $incrementPart;
 
         return $no_item;
     }
