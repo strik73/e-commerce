@@ -1,7 +1,8 @@
 /* Custom DataTables styling */
 table.dataTable thead th {
-    background-color: #0655a9;
+    background-color: #576fdb;
     color: white;
+    font-weight: 300;
 }
 
 table.dataTable tbody tr {
@@ -17,6 +18,6 @@ table.dataTable tbody tr:hover {
 }
 
 table.dataTable {
-    border: 1px solid #dee2e6;
+    border: 1px solid #ababab4a;
     font-size: 11pt;
 }

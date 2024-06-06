@@ -3,10 +3,12 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeUserController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +40,19 @@ Route::put('/profile/update/{id}', [ProfileController::class, 'update'])->name('
 Route::get('/shopping-cart', [HomeUserController::class, 'showCart'])->name('shopping-cart');
 Route::post('/shopping-cart/store', [TransactionController::class, 'storeCart'])->name('shopping-cart.store');
 Route::put('/shopping-cart/batal/{id}', [TransactionController::class, 'batal'])->name('shopping-cart.batal');
+
+Route::get('/history', [PaymentController::class, 'history'])->name('history');
+Route::get('/checkout/{id}', [PaymentController::class, 'createPayment'])->name('payment.create');
+Route::post('/checkout/pay/{id}', [PaymentController::class, 'storePayment'])->name('payment.store');
+
+Route::get('/merchant', [MerchantController::class, 'dashboard'])->name('merchant.dashboard');
+Route::get('/merchant/create', [MerchantController::class, 'create'])->name('merchant.items.create');
+Route::post('/merchant/store', [MerchantController::class, 'store'])->name('merchant.items.store');
+Route::get('/merchant/edit/{id}', [MerchantController::class, 'edit'])->name('merchant.items.edit');
+Route::post('/merchant/update/{id}', [MerchantController::class, 'update'])->name('merchant.items.update');
+Route::get('/merchant/transactions', [MerchantController::class, 'index'])->name('home.merchant');
+Route::get('/merchant/history', [MerchantController::class, 'history'])->name('merchant.history');
+Route::put('/merchant/approve/{id}', [TransactionController::class, 'approve'])->name('merchant.approve');
 
 //Admin view
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
