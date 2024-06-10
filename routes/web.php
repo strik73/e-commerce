@@ -43,7 +43,9 @@ Route::put('/shopping-cart/batal/{id}', [TransactionController::class, 'batal'])
 
 Route::get('/history', [PaymentController::class, 'history'])->name('history');
 Route::get('/checkout/{id}', [PaymentController::class, 'createPayment'])->name('payment.create');
+Route::get('/direct-checkout/{id}', [PaymentController::class, 'directPayment'])->name('payment.direct');
 Route::post('/checkout/pay/{id}', [PaymentController::class, 'storePayment'])->name('payment.store');
+Route::post('/direct-checkout/pay/{id}', [PaymentController::class, 'storeDirect'])->name('payment.storeDirect');
 
 Route::get('/merchant', [MerchantController::class, 'dashboard'])->name('merchant.dashboard');
 Route::get('/merchant/create', [MerchantController::class, 'create'])->name('merchant.items.create');

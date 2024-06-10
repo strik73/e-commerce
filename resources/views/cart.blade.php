@@ -16,6 +16,22 @@
             border-radius: 7px;
             color: #c60000;
         }
+
+        #statusSuccess {
+            border: 1px solid #00c659;
+            border-radius: 7px;
+            color: #00c659;
+        }
+
+        #item {
+            padding: 7px;
+            border-width: 3px;
+            border-style: solid;
+            border-image:
+                linear-gradient(to bottom,
+                    rgb(33, 60, 179),
+                    rgba(0, 0, 0, 0)) 1 100%;
+        }
     </style>
 
     @if (session('success'))
@@ -43,8 +59,18 @@
     <div class="container flex d-flex justify-content-evenly">
         <div class="flex-grow-1">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between p-4">
                     <h3>Shopping Cart</h3>
+                    <a type="button" class="btn btn-outline-secondary" href="{{ route('home') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 1 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M5 12l14 0" />
+                            <path d="M5 12l6 6" />
+                            <path d="M5 12l6 -6" />
+                        </svg>
+                        Kembali</a>
                 </div>
                 <div class="card-body">
                     @if (count($transactions) == 0)
@@ -62,8 +88,8 @@
                         </div>
                     @else
                         @foreach ($transactions as $transaction)
-                            <div class="container my-3">
-                                <div class="card">
+                            <div class="container my-3 mb-5">
+                                <div id="item" class="card">
                                     <div class="card-body flex d-flex justify-content-between mb-4">
                                         <img src="{{ $transaction->image }}" alt="foto"
                                             style="object-fit: cover; width: 150px; height: 150px; border: 1px solid rgba(128, 128, 128, 0.155); border-radius: 6px;">
@@ -85,7 +111,7 @@
                                             <h2 class="mb-3 text-end">Rp.
                                                 {{ number_format($transaction->total_price, 0, ',', '.') }}</h2>
                                             <div id="status" class="float-end">
-                                                @if ($transaction->status == 'Pending')
+                                                @if ($transaction->status == 'Pending' || $transaction->status == 'Processed')
                                                     <div id="statusPending" class="mb-3 float-end">
                                                         <h6 class="pt-2 px-3 text-center"> Order Status :
                                                             {{ $transaction->status }} </h6>
@@ -95,8 +121,8 @@
                                                         <h6 class="pt-2 px-3 text-center"> Order Status :
                                                             {{ $transaction->status }} </h6>
                                                     </div>
-                                                @elseif ($transaction->status == 'Processed')
-                                                    <div id="statusPending" class="mb-3 float-end">
+                                                @elseif ($transaction->status == 'Success')
+                                                    <div id="statusSuccess" class="mb-3 float-end">
                                                         <h6 class="pt-2 px-3 text-center"> Order Status :
                                                             {{ $transaction->status }} </h6>
                                                     </div>
