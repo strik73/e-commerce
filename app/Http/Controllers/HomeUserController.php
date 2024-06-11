@@ -26,6 +26,23 @@ class HomeUserController extends Controller
             ->join('users as seller', 'items.user_id', '=', 'seller.id')
             ->select('transactions.*', 'items.name', 'items.price', 'items.image', 'buyer.name as buyer_name', 'seller.name as seller_name')
             ->where('transactions.user_id', $user->id)
+            ->whereNot('transactions.status', 'Success')
+            ->paginate(5);
+
+        return view('cart', compact('transactions', 'user'));
+    }
+
+    public function showDone()
+    {
+        $user = Auth::user();
+        //$transactions = Transaction::where('user_id', $user->id)->paginate(5);
+        $transactions = DB::table('transactions')
+            ->join('items', 'transactions.item_no_item', '=', 'items.no_item')
+            ->join('users as buyer', 'transactions.user_id', '=', 'buyer.id')
+            ->join('users as seller', 'items.user_id', '=', 'seller.id')
+            ->select('transactions.*', 'items.name', 'items.price', 'items.image', 'buyer.name as buyer_name', 'seller.name as seller_name')
+            ->where('transactions.user_id', $user->id)
+            ->where('transactions.status', 'Success')
             ->paginate(5);
 
         return view('cart', compact('transactions', 'user'));

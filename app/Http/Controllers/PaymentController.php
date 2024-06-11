@@ -25,6 +25,23 @@ class PaymentController extends Controller
                 ->join('users', 'transactions.user_id', '=', 'users.id')
                 ->select('payments.id', 'payments.method', 'payments.amount', 'payments.status', 'payments.created_at', 'transactions.no_transaction', 'items.name', 'transactions.quantity', 'transactions.total_price', 'items.image', 'users.name as user_name', 'users.address', 'users.phone', 'users.city')
                 ->where('transactions.user_id', auth()->user()->id)
+                ->whereNot('payments.status', 'Success')
+                ->orderBy('payments.created_at', 'desc')
+                ->paginate(5);
+
+        return view('history', compact('payments'));;
+    }
+
+    public function historyDone()
+    {
+        // $payments = Payment::where('user_id', auth()->user()->id)->sortByDesc('created_at')->get();
+        $payments = DB::table('payments')
+                ->join('transactions', 'payments.transaction_no_transaction', '=', 'transactions.no_transaction')
+                ->join('items', 'transactions.item_no_item', '=', 'items.no_item')
+                ->join('users', 'transactions.user_id', '=', 'users.id')
+                ->select('payments.id', 'payments.method', 'payments.amount', 'payments.status', 'payments.created_at', 'transactions.no_transaction', 'items.name', 'transactions.quantity', 'transactions.total_price', 'items.image', 'users.name as user_name', 'users.address', 'users.phone', 'users.city')
+                ->where('transactions.user_id', auth()->user()->id)
+                ->where('payments.status', 'Success')
                 ->orderBy('payments.created_at', 'desc')
                 ->paginate(5);
 

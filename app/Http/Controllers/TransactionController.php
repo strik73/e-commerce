@@ -80,7 +80,7 @@ class TransactionController extends Controller
     {
         if (Transaction::where('no_transaction', $id)->exists()) {
             $transaction = Transaction::where('no_transaction', $id)->first();
-            $transaction->status = 'Success';
+            $transaction->status = 'On Delivery';
             $payment = Payment::where('transaction_no_transaction', $transaction->no_transaction)->first();
             $payment->status = 'Success';
 
