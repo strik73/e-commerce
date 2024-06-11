@@ -31,6 +31,7 @@
     </div>
 
     <div class="card mt-3">
+        @if (auth()->user()->can('CREATE USER'))
         <div>
             <a class="float-end mt-3 me-4 btn btn-sm btn-primary pt-2 pe-3" href='{{route('user.create')}}'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
@@ -41,6 +42,7 @@
                 </svg>
                 Add New</a>
         </div>
+        @endif
 
         <div class="mt-1 p-4">
             <div class="table-responsive">
@@ -72,7 +74,7 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    {{-- @if (auth()->user()->can('UPDATE KATEGORI')) --}}
+                                    @if (auth()->user()->can('EDIT USER'))
                                     <a href="{{route('user.edit', $user->id)}}" type="button" class="btn btn-sm btn-primary">
                                         <span class="">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-pencil"
@@ -85,7 +87,7 @@
                                             </svg>
                                         </span> Edit
                                     </a>
-                                    {{-- @endif --}}
+                                    @endif
                                 </td>
                             </tr>
                         @empty

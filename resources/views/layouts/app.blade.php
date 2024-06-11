@@ -87,19 +87,22 @@
                 </li>
                 <hr />
                 <li class="nav-item">
-                    <a href="{{ route('user.index') }}"
-                        class="nav-link text-white @if (request()->routeIs('user.index')) active @endif" aria-current="page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="ms-2">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-                        </svg>
-                        Master User
-                    </a>
+                    @if (auth()->user()->can('VIEW USER'))
+                        <a href="{{ route('user.index') }}"
+                            class="nav-link text-white @if (request()->routeIs('user.index')) active @endif"
+                            aria-current="page">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="ms-2">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                            </svg>
+                            Master User
+                        </a>
+                    @endif
                 </li>
                 <hr />
                 <li class="nav-item">
@@ -117,16 +120,20 @@
                     </a>
                 </li>
                 <li class="ms-3 nav-item">
-                    <a href="{{ route('category.index') }}"
-                        class="nav-link text-white ms-4 @if (request()->routeIs('category.index')) active @endif">
-                        Category
-                    </a>
+                    @if (auth()->user()->can('VIEW CATEGORY'))
+                        <a href="{{ route('category.index') }}"
+                            class="nav-link text-white ms-4 @if (request()->routeIs('category.index')) active @endif">
+                            Category
+                        </a>
+                    @endif
                 </li>
                 <li class="ms-3 nav-item">
-                    <a href="{{ route('items.index') }}"
-                        class="nav-link text-white ms-4 @if (request()->routeIs('items.index')) active @endif">
-                        Items
-                    </a>
+                    @if (auth()->user()->can('VIEW ITEMS'))
+                        <a href="{{ route('items.index') }}"
+                            class="nav-link text-white ms-4 @if (request()->routeIs('items.index')) active @endif">
+                            Items
+                        </a>
+                    @endif
                 </li>
                 <hr />
                 <li class="nav-item">
@@ -146,16 +153,20 @@
                     </a>
                 </li>
                 <li class="ms-3 nav-item">
-                    <a href="{{ route('transaction.index') }}"
-                        class="nav-link text-white ms-4 @if (request()->routeIs('transaction.index')) active @endif">
-                        Transaction List
-                    </a>
+                    @if (auth()->user()->can('VIEW TRANSACTION'))
+                        <a href="{{ route('transaction.index') }}"
+                            class="nav-link text-white ms-4 @if (request()->routeIs('transaction.index')) active @endif">
+                            Transaction List
+                        </a>
+                    @endif
                 </li>
                 <li class="ms-3 nav-item">
-                    <a href="{{ route('payment.index') }}"
-                        class="nav-link text-white ms-4 @if (request()->routeIs('payment.index')) active @endif">
-                        Payment History
-                    </a>
+                    @if (auth()->user()->can('VIEW PAYMENT'))
+                        <a href="{{ route('payment.index') }}"
+                            class="nav-link text-white ms-4 @if (request()->routeIs('payment.index')) active @endif">
+                            Payment History
+                        </a>
+                    @endif
                 </li>
             </ul>
         </div>

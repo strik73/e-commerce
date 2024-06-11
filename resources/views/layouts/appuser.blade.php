@@ -86,34 +86,44 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a type="button" class="btn btn-sm px-3 btn-primary" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a type="button" class="btn btn-sm btn-outline-primary px-3 ms-2" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link d-flex align-items-center dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <div class="avatar justify-content-center align-middle text-center mx-2">@php
-                                        echo strtoupper(substr(Auth::user()->name, 0, 2));
-                                    @endphp </div>
+                                <a id="navbarDropdown" class="nav-link d-flex align-items-center dropdown-toggle"
+                                    href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" v-pre>
+                                    <div class="avatar justify-content-center align-middle text-center mx-2">
+                                        @php
+                                            echo strtoupper(substr(Auth::user()->name, 0, 2));
+                                        @endphp </div>
                                     <span>{{ Auth::user()->name }}</span>
                                 </a>
 
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('profile.index', auth()->user()->id)}}">
+                                    @if (auth()->user()->can('VIEW ADMIN'))
+                                        <a class="dropdown-item" href="{{ route('admin.home') }}">
+                                            Admin Dashboard
+                                        </a>
+                                    @endif
+
+                                    <a class="dropdown-item" href="{{ route('profile.index', auth()->user()->id) }}">
                                         Profile
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('merchant.dashboard')}}">
-                                        Merchant
-                                    </a>
+                                    @if (auth()->user()->can('VIEW MERCHANT'))
+                                        <a class="dropdown-item" href="{{ route('merchant.dashboard') }}">
+                                            Merchant Page
+                                        </a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

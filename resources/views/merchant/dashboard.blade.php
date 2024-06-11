@@ -92,18 +92,18 @@
         </div>
         <div class="card-body">
             <div class="mt-1 px-4">
+                <div class="text-end">
+                    <a type="button" href="{{ route('merchant.items.create') }}" class="button-new mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                            stroke-linejoin="round" class="pb-1">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 5l0 14" />
+                            <path d="M5 12l14 0" />
+                        </svg>
+                        New Item</a>
+                </div>
                 @if (count($items) !== 0)
-                    <div class="text-end">
-                        <a type="button" href="{{ route('merchant.items.create') }}" class="button-new mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
-                                stroke-linejoin="round" class="pb-1">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 5l0 14" />
-                                <path d="M5 12l14 0" />
-                            </svg>
-                            New Item</a>
-                    </div>
                     <div class="table-responsive">
                         <table id='data' class="table table-bordered table-hover" width='100%'>
                             <thead>

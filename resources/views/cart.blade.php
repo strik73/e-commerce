@@ -23,6 +23,12 @@
             color: #00c659;
         }
 
+        #statusDelivery {
+            border: 1px solid #003bc6;
+            border-radius: 7px;
+            color: #003bc6;
+        }
+
         #item {
             padding: 7px;
             border-width: 3px;
@@ -73,6 +79,10 @@
                         Kembali</a>
                 </div>
                 <div class="card-body">
+                    <div class="ms-2 ps-1 mb-4">
+                        <a type="button" class="btn btn-light @if (request()->routeIs('shopping-cart')) active @endif" href="{{ route('shopping-cart') }}">Show On Process</a>
+                        <a type="button" class="btn btn-light @if (request()->routeIs('shopping-cart.done')) active @endif" href="{{ route('shopping-cart.done') }}">Show Done</a>
+                    </div>
                     @if (count($transactions) == 0)
                         <div class="text-center">
                             <h4 class="text-secondary opacity-75">Belum ada item yang ditambahkan!</h4>
@@ -88,10 +98,10 @@
                         </div>
                     @else
                         @foreach ($transactions as $transaction)
-                            <div class="container my-3 mb-5">
+                            <div class="container my-4 mb-5">
                                 <div id="item" class="card">
                                     <div class="card-body flex d-flex justify-content-between mb-4">
-                                        <img src="{{ $transaction->image }}" alt="foto"
+                                        <img src="{{ asset($transaction->image) }}" alt="foto"
                                             style="object-fit: cover; width: 150px; height: 150px; border: 1px solid rgba(128, 128, 128, 0.155); border-radius: 6px;">
                                         <div class="d-flex flex-column w-50">
                                             <h4 class="mb-3">{{ $transaction->name }}</h5>
@@ -123,6 +133,11 @@
                                                     </div>
                                                 @elseif ($transaction->status == 'Success')
                                                     <div id="statusSuccess" class="mb-3 float-end">
+                                                        <h6 class="pt-2 px-3 text-center"> Order Status :
+                                                            {{ $transaction->status }} </h6>
+                                                    </div>
+                                                @elseif ($transaction->status == 'On Delivery')
+                                                    <div id="statusDelivery" class="mb-3 float-end">
                                                         <h6 class="pt-2 px-3 text-center"> Order Status :
                                                             {{ $transaction->status }} </h6>
                                                     </div>

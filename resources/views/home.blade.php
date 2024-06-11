@@ -81,7 +81,6 @@
     <hr class="mx-3">
 
     <div id="etalase" class="container row">
-        <h3 class="mb-4">List Produk</h3>
         @foreach ($items as $i)
             <div class="col-md-3 col-sm-12 col-4">
                 <div class="card">

@@ -67,6 +67,12 @@
                         Kembali</a>
                 </div>
                 <div class="card-body">
+                    <div class="ms-2 ps-1 mb-4">
+                        <a type="button" class="btn btn-light @if (request()->routeIs('history')) active @endif"
+                            href="{{ route('history') }}">Show On Process</a>
+                        <a type="button" class="btn btn-light @if (request()->routeIs('history.done')) active @endif"
+                            href="{{ route('history.done') }}">Show Done</a>
+                    </div>
                     @if (count($payments) == 0)
                         <div class="text-center">
                             <h4 class="text-secondary opacity-75">Belum ada pembayaran!</h4>
